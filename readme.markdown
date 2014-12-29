@@ -1,6 +1,8 @@
-﻿# mojio-js
+**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](https://bmw.developer.moj.io/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [myFirstMojioApp](https://github.com/mojio/myFirstMojioApp) source instead.
 
-Mojio javascript REST client.  Mojio provides a standard REST platform for writing connected car applications.
+﻿# bmw-js
+
+BMW javascript REST client.  BMW provides a standard REST platform for writing connected car applications.
 
 This repository contains a Node-js client and a Browser based js client.
 
@@ -9,20 +11,20 @@ This repository contains a Node-js client and a Browser based js client.
 For browser based HTML applications you get this client via Bower: (you will also need jquery)
 
 ```
-bower install mojio-js
+bower install bmw-js
 bower install jquery
 ```
 
 Or via the Mojio CDN at https://djaqzxyxnyyiy.cloudfront.net
 
 ```
-<script src="https://djaqzxyxnyyiy.cloudfront.net/mojio-js.js"></script>
+<script src="https://djaqzxyxnyyiy.cloudfront.net/bmw-js.js"></script>
 ```
 
 If you are in a node environment, use npm:
 
 ```
-npm install mojio-js
+npm install bmw-js
 ```
 
 You can always checkout this repo and use the code directly.
@@ -36,7 +38,7 @@ Look here in the repository:
 example/login.html
 test/login_test.coffee
 ```
-[![build status](https://travis-ci.org/mojio/mojio-js.svg?branch=master)](https://travis-ci.org/mojio/mojio-js)
+[![build status](https://travis-ci.org/i3-hackathon/bmw-js.svg?branch=master)](https://travis-ci.org/i3-hackathon/bmw-js)
 
 ## HTML Example
 
@@ -68,7 +70,7 @@ Mojio = @Mojio
 
 config = {
     application: 'Your-Application-Key-Here',
-    hostname: 'api.moj.io',
+    hostname: 'bmw.api.moj.io',
     version: 'v1',
     port:'443',
     scheme: 'https',
@@ -124,7 +126,7 @@ MojioClient = @MojioClient
 
 config = {
     application: 'Your-Application-Key-Here',
-    hostname: 'api.moj.io',
+    hostname: 'bmw.api.moj.io',
     version: 'v1',
     port:'443',
     scheme: 'https',
@@ -182,7 +184,7 @@ The old login is deprecated and will be removed in a few months:
 config = {
            application: 'YOUR APPLICATION KEY',
            secret: 'YOUR SECRET KEY',
-           hostname: 'api.moj.io'
+           hostname: 'bmw.api.moj.io'
          }
 Mojio = require './lib/MojioClient.js'
 mojio = new Mojio(config)
@@ -198,7 +200,7 @@ var Mojio, mojio, config;
 config = {
   application: 'YOUR APPLICATION KEY',
   secret: 'YOUR SECRET KEY',
-  hostname: 'api.moj.io',
+  hostname: 'bmw.api.moj.io',
   version: 'v1',
   port: '443',
   scheme: 'https'
