@@ -86,7 +86,7 @@ module.exports = class MojioClient
             parts.path += MojioClient._makeParameters(request.parameters)
 
         parts.headers = {}
-        parts.headers["ApiToken"] = @getTokenId() if @getTokenId()?
+        parts.headers["MojioAPIToken"] = @getTokenId() if @getTokenId()?
         parts.headers += request.headers if (request.headers?)
         #parts.headers["Access-Control-Allow-Credentials"] = 'true'
         parts.headers["Content-Type"] = 'application/json'
@@ -116,7 +116,7 @@ module.exports = class MojioClient
         parts.path += "&redirect_uri="+redirect_url
         parts.path += "&scope="+scope
         parts.headers = {}
-        parts.headers["ApiToken"] = @getTokenId() if @getTokenId()?
+        parts.headers["MojioAPIToken"] = @getTokenId() if @getTokenId()?
         parts.headers["Content-Type"] = 'application/json'
 
         url = parts.scheme+"://"+parts.host+":"+parts.port+parts.path
@@ -162,7 +162,7 @@ module.exports = class MojioClient
         parts.path += "&client_id=" + @options.application
         parts.path += "&redirect_uri="+redirect_url
         parts.headers = {}
-        parts.headers["ApiToken"] = @getTokenId() if @getTokenId()?
+        parts.headers["MojioAPIToken"] = @getTokenId() if @getTokenId()?
         parts.headers["Content-Type"] = 'application/json'
 
         url = parts.scheme+"://"+parts.host+":"+parts.port+parts.path

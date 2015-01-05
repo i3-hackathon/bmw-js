@@ -210,7 +210,7 @@
       }
       parts.headers = {};
       if (this.getTokenId() != null) {
-        parts.headers["ApiToken"] = this.getTokenId();
+        parts.headers["MojioAPIToken"] = this.getTokenId();
       }
       if ((request.headers != null)) {
         parts.headers += request.headers;
@@ -250,7 +250,7 @@
       parts.path += "&scope=" + scope;
       parts.headers = {};
       if (this.getTokenId() != null) {
-        parts.headers["ApiToken"] = this.getTokenId();
+        parts.headers["MojioAPIToken"] = this.getTokenId();
       }
       parts.headers["Content-Type"] = 'application/json';
       url = parts.scheme + "://" + parts.host + ":" + parts.port + parts.path;
@@ -301,7 +301,7 @@
       parts.path += "&redirect_uri=" + redirect_url;
       parts.headers = {};
       if (this.getTokenId() != null) {
-        parts.headers["ApiToken"] = this.getTokenId();
+        parts.headers["MojioAPIToken"] = this.getTokenId();
       }
       parts.headers["Content-Type"] = 'application/json';
       url = parts.scheme + "://" + parts.host + ":" + parts.port + parts.path;
