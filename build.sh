@@ -7,7 +7,7 @@ cp src/models/*.js lib/models
 coffee --compile src/browser
 cd src/browser
 ../../node_modules/.bin/browserify -r ./HttpBrowserWrapper.js --standalone HttpBrowserWrapper > ../../dist/browser/HttpBrowserWrapper.js
-../../node_modules/.bin/browserify -r ./MojioClient.js --standalone MojioClient > ../../dist/browser/MojioClient.js
+../../node_modules/.bin/browserify -r ./MojioClient.js --standalone BMWClient > ../../dist/browser/BMWClient.js
 cd ../models
 ../../node_modules/.bin/browserify -r ./App.js --standalone App > ../../dist/browser/App.js
 ../../node_modules/.bin/browserify -r ./Event.js --standalone Event > ../../dist/browser/Event.js
@@ -28,11 +28,11 @@ coffee --map --compile test
 
 cd dist/browser
 uglifyjs Address.js App.js Event.js Location.js Mojio.js Observer.js Product.js \
-    Subscription.js Trip.js User.js Vehicle.js -p relative -o ../cdn/mojio-js-models.min.js
-uglifyjs MojioClient.js -o ../cdn/mojio-js.min.js
+    Subscription.js Trip.js User.js Vehicle.js -p relative -o ../cdn/bmw-js-models.min.js
+uglifyjs BMWClient.js -o ../cdn/bmw-js.min.js
 cd ../cdn
-uglifyjs mojio-js-models.min.js -b -o ../cdn/mojio-js-models.js
-uglifyjs mojio-js.min.js -b -o ../cdn/mojio-js.js
+uglifyjs bmw-js-models.min.js -b -o ../cdn/bmw-js-models.js
+uglifyjs bmw-js.min.js -b -o ../cdn/bmw-js.js
 cd ../../
 
 mocha -t 30000 test
