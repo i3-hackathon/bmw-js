@@ -1,12 +1,12 @@
 {
-    "name": "mojio-js",
+    "name": "bmw-js",
     "author": "Robb Lovell",
-    "description": "Mojio javascript REST client.",
-    "version": "2.2.4",
+    "description": "BMW javascript REST client for the BMW i3 hackathon.",
+    "version": "2.2.5",
     "private": false,
     "repository": {
         "type": "git",
-        "url": "https://github.com/mojio/mojio-js"
+        "url": "https://github.com/i3-hackathon/bmw-js"
     },
     "dependencies": {
         "signalr-client": "0.0.5"
@@ -26,6 +26,8 @@
         "npm": "1.4.*"
     },
     "keywords": [
+        "BMW",
+        "i3",
         "Mojio",
         "javascript",
         "vehicle",

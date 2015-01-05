@@ -1,6 +1,6 @@
-**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](https://bmw.developer.moj.io/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [mojio-js](https://github.com/mojio/mojio-js) project instead.
+﻿**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](https://bmw.developer.moj.io/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [mojio-js](https://github.com/mojio/mojio-js) project instead.
 
-﻿# bmw-js
+# bmw-js
 
 BMW javascript REST client.  BMW provides a standard REST platform for writing connected car applications.
 
@@ -15,10 +15,10 @@ bower install bmw-js
 bower install jquery
 ```
 
-Or via the Mojio CDN at https://djaqzxyxnyyiy.cloudfront.net
+Or via the rawgit CDN
 
 ```
-<script src="https://djaqzxyxnyyiy.cloudfront.net/bmw-js.js"></script>
+<script src="https://rawgit.com/i3-hackathon/bmw-js/master/dist/cdn/mojio-js.min.js"></script>
 ```
 
 If you are in a node environment, use npm:

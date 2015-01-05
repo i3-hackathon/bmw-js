@@ -3,7 +3,7 @@ SignalR = require './SignalRBrowserWrapper'
 
 module.exports = class MojioClient
 
-    defaults = { hostname: 'api.moj.io', port: '443', version: 'v1', scheme: 'https', signalr_scheme: 'http', signalr_port: '80', signalr_hub: 'ObserverHub' }
+    defaults = { hostname: 'bmw.api.moj.io', port: '443', version: 'v1', scheme: 'https', signalr_scheme: 'http', signalr_port: '80', signalr_hub: 'ObserverHub' }
 
     constructor: (@options) ->
         @options ?= { hostname: defaults.hostname, port: @defaults.port, version: @defaults.version, scheme: @defaults.scheme }
@@ -22,7 +22,7 @@ module.exports = class MojioClient
         @connStatus = null
         @auth_token = null
 
-        @signalr = new SignalR(@options.signalr_scheme+"://"+@options.hostname+":"+@options.signalr_port+"/v1/signalr",[@options.signalr_hub])
+        @signalr = new SignalR(@options.signalr_scheme+"://"+@options.hostname+":"+@options.signalr_port+"/v1/signalr",[@options.signalr_hub], $)
 
     ###
         Helpers

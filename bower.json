@@ -1,7 +1,7 @@
 {
-  "name": "mojio-js",
-  "version": "2.2.4",
-  "main": "dist/MojioClient.js",
+  "name": "bmw-js",
+  "version": "2.2.5",
+  "main": "dist/BMWClient.js",
   "ignore": [
     ".gitignore",
     "travis.yml",
