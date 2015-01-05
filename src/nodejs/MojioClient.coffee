@@ -3,7 +3,7 @@ SignalR = require './SignalRNodeWrapper'
 
 module.exports = class MojioClient
 
-    defaults = { hostname: 'api.moj.io', port: '443', version: 'v1', scheme: 'https', signalr_scheme: 'http', signalr_port: '80', signalr_hub: 'ObserverHub' }
+    defaults = { hostname: 'bmw.api.moj.io', port: '443', version: 'v1', scheme: 'https', signalr_scheme: 'http', signalr_port: '80', signalr_hub: 'ObserverHub' }
 
     constructor: (@options) ->
         @options ?= { hostname: defaults.hostname, port: @defaults.port, version: @defaults.version, scheme: @defaults.scheme }
@@ -86,7 +86,7 @@ module.exports = class MojioClient
             parts.path += MojioClient._makeParameters(request.parameters)
 
         parts.headers = {}
-        parts.headers["MojioAPIToken"] = @getTokenId() if @getTokenId()?
+        parts.headers["ApiToken"] = @getTokenId() if @getTokenId()?
         parts.headers += request.headers if (request.headers?)
         #parts.headers["Access-Control-Allow-Credentials"] = 'true'
         parts.headers["Content-Type"] = 'application/json'
@@ -116,7 +116,7 @@ module.exports = class MojioClient
         parts.path += "&redirect_uri="+redirect_url
         parts.path += "&scope="+scope
         parts.headers = {}
-        parts.headers["MojioAPIToken"] = @getTokenId() if @getTokenId()?
+        parts.headers["ApiToken"] = @getTokenId() if @getTokenId()?
         parts.headers["Content-Type"] = 'application/json'
 
         url = parts.scheme+"://"+parts.host+":"+parts.port+parts.path
@@ -162,7 +162,7 @@ module.exports = class MojioClient
         parts.path += "&client_id=" + @options.application
         parts.path += "&redirect_uri="+redirect_url
         parts.headers = {}
-        parts.headers["MojioAPIToken"] = @getTokenId() if @getTokenId()?
+        parts.headers["ApiToken"] = @getTokenId() if @getTokenId()?
         parts.headers["Content-Type"] = 'application/json'
 
         url = parts.scheme+"://"+parts.host+":"+parts.port+parts.path
