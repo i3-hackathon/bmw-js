@@ -70,7 +70,7 @@ Mojio = @Mojio
 
 config = {
     application: 'Your-Application-Key-Here',
-    hostname: 'bmw.api.moj.io',
+    hostname: 'data.api.hackthedrive.com',
     version: 'v1',
     port:'443',
     scheme: 'https',
@@ -126,7 +126,7 @@ MojioClient = @MojioClient
 
 config = {
     application: 'Your-Application-Key-Here',
-    hostname: 'bmw.api.moj.io',
+    hostname: 'data.api.hackthedrive.com',
     version: 'v1',
     port:'443',
     scheme: 'https',
@@ -184,7 +184,7 @@ The old login is deprecated and will be removed in a few months:
 config = {
            application: 'YOUR APPLICATION KEY',
            secret: 'YOUR SECRET KEY',
-           hostname: 'bmw.api.moj.io'
+           hostname: 'data.api.hackthedrive.com'
          }
 Mojio = require './lib/MojioClient.js'
 mojio = new Mojio(config)
@@ -200,7 +200,7 @@ var Mojio, mojio, config;
 config = {
   application: 'YOUR APPLICATION KEY',
   secret: 'YOUR SECRET KEY',
-  hostname: 'bmw.api.moj.io',
+  hostname: 'data.api.hackthedrive.com',
   version: 'v1',
   port: '443',
   scheme: 'https'
