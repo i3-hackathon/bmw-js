@@ -1,4 +1,4 @@
-﻿**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](https://bmw.developer.moj.io/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [mojio-js](https://github.com/mojio/mojio-js) project instead.
+﻿**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](https://data.hackthedrive.com/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [mojio-js](https://github.com/mojio/mojio-js) project instead.
 
 # bmw-js
 
@@ -18,7 +18,7 @@ bower install jquery
 Or via the rawgit CDN
 
 ```
-<script src="https://rawgit.com/i3-hackathon/bmw-js/master/dist/cdn/mojio-js.min.js"></script>
+<script src="https://rawgit.com/i3-hackathon/bmw-js/master/dist/cdn/bmw-js.min.js"></script>
 ```
 
 If you are in a node environment, use npm:
@@ -59,14 +59,14 @@ authorize.html
 
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/signalr/jquery.signalR-2.0.2.js"></script>
-<script src="../dist/browser/MojioClient.js"></script>
+<script src="../dist/browser/BMWClient.js"></script>
 <script src="authorize.js"></script>
 
 </body>
 ```
 authorize.coffee (compiles to authorize.js included in the html above)
 ```
-Mojio = @Mojio
+BMWClient = @BMWClient
 
 config = {
     application: 'Your-Application-Key-Here',
@@ -77,7 +77,7 @@ config = {
     redirect_uri: 'Your-Login-redirect_url-Here'
 }
 
-mojio_client = new MojioClient(config)
+bmw_client = new BMWClient(config)
 
 $( () ->
 
@@ -91,7 +91,7 @@ $( () ->
         div.innerHTML += 'Mojio Error:: Set the login redirect url in authorize.js and register it in your application at the developer center.  <br>'
         return
         
-    mojio_client.authorize(config.redirect_uri)
+    bmw_client.authorize(config.redirect_uri)
 )
 ```
 On completion of the oauth login, the browser will be redirected to the given redirect_url on the host server or application.  The example's implementation which contains how to retrieve the logged in user and the authorization token is below: 
@@ -115,14 +115,14 @@ authorize_complete.html
 
 <script src="../bower_components/jquery/dist/jquery.js"></script>
 <script src="../bower_components/signalr/jquery.signalR-2.0.2.js"></script>
-<script src="../dist/browser/MojioClient.js"></script>
+<script src="../dist/browser/BMWClient.js"></script>
 <script src="authorize_complete.js"></script>
 
 </body>
 ```
 authorize_complete.coffee (compiles to authorize.js included in the html above)
 ```
-MojioClient = @MojioClient
+BMWClient = @BMWClient
 
 config = {
     application: 'Your-Application-Key-Here',
@@ -133,21 +133,21 @@ config = {
     redirect_uri: 'Your-Logout-redirect_url-Here'
 }
 
-mojio_client = new MojioClient(config)
-App = mojio_client.model('App')
+bmw_client = new BMWClient(config)
+App = bmw_client.model('App')
 
 $( () ->
     if (config.application == 'Your-Application-Key-Here')
         div = document.getElementById('result')
-        div.innerHTML += 'Mojio Error:: Set your application and secret keys in authorize.js.  <br>'
+        div.innerHTML += 'BMW Error:: Set your application and secret keys in authorize.js.  <br>'
         return
 
     if (config.application == 'Your-Logout-redirect_url-Here')
         div = document.getElementById('result')
-        div.innerHTML += 'Mojio Error:: Set the logout redirect url in authorize.js and register it in your application at the developer center.  <br>'
+        div.innerHTML += 'BMW Error:: Set the logout redirect url in authorize.js and register it in your application at the developer center.  <br>'
         return
 
-    mojio_client.token((error, result) ->
+    bmw_client.token((error, result) ->
         if (error)
             alert("Authorize Redirect, token could not be retreived:"+error)
         else
@@ -156,19 +156,19 @@ $( () ->
             div = document.getElementById('result')
             div.innerHTML += 'POST /login<br>'
             div.innerHTML += JSON.stringify(result)
-            mojio_client.query(App, {}, (error, result) ->
+            bmw_client.query(App, {}, (error, result) ->
                 if (error)
                     div = document.getElementById('result2')
                     div.innerHTML += 'Get Apps Error'+error+'<br>'
                 else
-                    apps = mojio_client.getResults(App, result)
+                    apps = bmw_client.getResults(App, result)
 
                     app = apps[0]
                     div = document.getElementById('result2')
                     div.innerHTML += 'Query /App<br>'
                     div.innerHTML += JSON.stringify(result)
                     alert("Hit Ok to log out and return to the authorization page.")
-                    mojio_client.unauthorize(config.redirect_uri)
+                    bmw_client.unauthorize(config.redirect_uri)
             )
     )
 )
@@ -186,16 +186,16 @@ config = {
            secret: 'YOUR SECRET KEY',
            hostname: 'data.api.hackthedrive.com'
          }
-Mojio = require './lib/MojioClient.js'
-mojio = new Mojio(config)
+BMWClient = require './lib/nodejs/MojioClient.js'
+bmw = new BMWClient(config)
 
-mojio.login('YOUR USERNAME', 'YOUR PASSWORD', (error, result) ->
+bmw.login('YOUR USERNAME', 'YOUR PASSWORD', (error, result) ->
     if error then console.log("error: "+error) else console.log("success:"+result)
 )
 ```
 ### JavaScript
 ```
-var Mojio, mojio, config;
+var BMWClient, bmw, config;
 
 config = {
   application: 'YOUR APPLICATION KEY',
@@ -206,11 +206,11 @@ config = {
   scheme: 'https'
 };
 
-Mojio = require('./lib/MojioClient.js');
+BMW = require('./lib/nodejs/MojioClient.js');
 
-mojio = new Mojio(config);
+bmw = new BMW(config);
 
-mojio.login('YOUR USERNAME', 'YOUR PASSWORD', function(error, result) {
+bmw.login('YOUR USERNAME', 'YOUR PASSWORD', function(error, result) {
   if (error) {
     return console.log("error: " + error);
   } else {
@@ -242,25 +242,25 @@ query(model, { criteria="name=blah; field=blah;", limit=10, offset=0, sortby="na
 
 ### Observers
 
-You can observe changes to entities in the Mojio system and have the system push those changes to your application through SignalR or through REST Post callbacks.  For client side applications, SignalR is the preferred technology, where as a sever based application would probably prefer POST callbacks.
+You can observe changes to entities in the BMW system and have the system push those changes to your application through SignalR or through REST Post callbacks.  For client side applications, SignalR is the preferred technology, where as a sever based application would probably prefer POST callbacks.
 
 There are two main methods available in the javascript client, "watch" and "observe".  For "watch", construct the observer based on one of the observer schema types.  
 
 Optionally, for Vehicles and Events, conditional observers can be created that deliver changes to you only if a particular measurement has satisfied a condition.  For instance, "Speed" is a measurement available on events and stored as "LastSpeed" on vehicles.  A conditional "Speed" observer with a SpeedLow value of 80 will fire if the speed is greator than 80 (as you have guessed already, SpeedHigh can be set to restrict the upper bound too.
 
-See src/models/schema.coffee or try out the Mojio API endpoint https://api.moj.io/schema or more specifically: https://api.moj.io/v1/Schema?entityType=observers)
+See src/models/schema.coffee or try out the BMW API endpoint https://data.api.hackthedrive.com/v1/schema or more specifically: https://data.api.hackthedrive.com/v1/Schema?entityType=observers)
 
-The objects that can be observed are enumerated here: https://api.moj.io/v1/Schema?entityType=cannon and here: https://api.moj.io/v1/Schema?entityType=events
+The objects that can be observed are enumerated here: https://data.api.hackthedrive.com/v1/Schema?entityType=cannon and here: https://data.api.hackthedrive.com/v1/Schema?entityType=events
 
 See the test folder, test/observers_Test.coffee and test/conditional_observer_test.coffee for examples of the "observe" and "watch" methods respectively. Conditional observers can only be created with the "watch" call.
 
 Example of the "observe" method of vehicles:
 ```
-mojio_client.observe(vehicle, null,
+bmw_client.observe(vehicle, null,
     (entity) ->
         entity.should.be.an.instanceOf(Object)
         console.log("Observed change seen.")
-        mojio_client.unobserve(observer, vehicle, null, null, (error, result) ->
+        bmw_client.unobserve(observer, vehicle, null, null, (error, result) ->
             result.should.be.an.instanceOf(Observer)
         )
     ,
@@ -276,12 +276,12 @@ observer = new Observer(
         Subject: vehicle.model(), SubjectId: vehicle.id(), "Transports": "SignalR"
     }
 )
-mojio_client.watch(observer,
+bmw_client.watch(observer,
     (entity) ->
         entity.should.be.an.instanceOf(Object)
         console.log("Observed change seen.")
-        mojio_client.ignore(observer, (error, result) ->
-            mojio_client.delete(vehicle, (error, result) ->
+        bmw_client.ignore(observer, (error, result) ->
+            bmw_client.delete(vehicle, (error, result) ->
                 (error==null).should.be.true
                 console.log("Vehicle deleted.")
                 done()
@@ -352,7 +352,7 @@ For browser code
 coffee --map --compile src/browser
 cd src/browser
 browserify -r ./HttpBrowserWrapper.js --standalone HttpBrowserWrapper > ../../dist/browser/HttpBrowserWrapper.js
-browserify -r ./MojioClient.js --standalone Mojio > ../../dist/browser/MojioClient.js
+browserify -r ./MojioClient.js --standalone BMWClient > ../../dist/browser/BMWClient.js
 ```
 
 You can also just run the builder by typing:
