@@ -1,4 +1,4 @@
-﻿**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](https://data.hackthedrive.com/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [mojio-js](https://github.com/mojio/mojio-js) project instead.
+﻿**NOTICE:** This fork is modified to work in conjunction with the [BMW i3 Hackathon developer center](http://data.hackthedrive.com/) ONLY.  If you are not apart of the BMW i3 hackathon, please refer to [mojio-js](https://github.com/mojio/mojio-js) project instead.
 
 # bmw-js
 
@@ -72,8 +72,8 @@ config = {
     application: 'Your-Application-Key-Here',
     hostname: 'data.api.hackthedrive.com',
     version: 'v1',
-    port:'443',
-    scheme: 'https',
+    port:'80',
+    scheme: 'http',
     redirect_uri: 'Your-Login-redirect_url-Here'
 }
 
@@ -128,8 +128,8 @@ config = {
     application: 'Your-Application-Key-Here',
     hostname: 'data.api.hackthedrive.com',
     version: 'v1',
-    port:'443',
-    scheme: 'https',
+    port:'80',
+    scheme: 'http',
     redirect_uri: 'Your-Logout-redirect_url-Here'
 }
 
@@ -202,8 +202,8 @@ config = {
   secret: 'YOUR SECRET KEY',
   hostname: 'data.api.hackthedrive.com',
   version: 'v1',
-  port: '443',
-  scheme: 'https'
+  port: '80',
+  scheme: 'http'
 };
 
 BMW = require('./lib/nodejs/MojioClient.js');
@@ -248,9 +248,9 @@ There are two main methods available in the javascript client, "watch" and "obse
 
 Optionally, for Vehicles and Events, conditional observers can be created that deliver changes to you only if a particular measurement has satisfied a condition.  For instance, "Speed" is a measurement available on events and stored as "LastSpeed" on vehicles.  A conditional "Speed" observer with a SpeedLow value of 80 will fire if the speed is greator than 80 (as you have guessed already, SpeedHigh can be set to restrict the upper bound too.
 
-See src/models/schema.coffee or try out the BMW API endpoint https://data.api.hackthedrive.com/v1/schema or more specifically: https://data.api.hackthedrive.com/v1/Schema?entityType=observers)
+See src/models/schema.coffee or try out the BMW API endpoint http://data.api.hackthedrive.com/v1/schema or more specifically: http://data.api.hackthedrive.com/v1/Schema?entityType=observers)
 
-The objects that can be observed are enumerated here: https://data.api.hackthedrive.com/v1/Schema?entityType=cannon and here: https://data.api.hackthedrive.com/v1/Schema?entityType=events
+The objects that can be observed are enumerated here: http://data.api.hackthedrive.com/v1/Schema?entityType=cannon and here: http://data.api.hackthedrive.com/v1/Schema?entityType=events
 
 See the test folder, test/observers_Test.coffee and test/conditional_observer_test.coffee for examples of the "observe" and "watch" methods respectively. Conditional observers can only be created with the "watch" call.
 
