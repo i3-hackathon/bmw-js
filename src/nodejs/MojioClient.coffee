@@ -3,7 +3,7 @@ SignalR = require './SignalRNodeWrapper'
 
 module.exports = class MojioClient
 
-    defaults = { hostname: 'bmw.api.moj.io', port: '443', version: 'v1', scheme: 'https', signalr_scheme: 'http', signalr_port: '80', signalr_hub: 'ObserverHub' }
+    defaults = { hostname: 'data.api.hackthedrive.com', port: '80', version: 'v1', scheme: 'http', signalr_scheme: 'http', signalr_port: '80', signalr_hub: 'ObserverHub' }
 
     constructor: (@options) ->
         @options ?= { hostname: defaults.hostname, port: @defaults.port, version: @defaults.version, scheme: @defaults.scheme }

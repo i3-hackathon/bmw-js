@@ -2,7 +2,7 @@
     "name": "bmw-js",
     "author": "Robb Lovell",
     "description": "BMW javascript REST client for the BMW i3 hackathon.",
-    "version": "2.2.5",
+    "version": "2.2.6",
     "private": false,
     "repository": {
         "type": "git",
